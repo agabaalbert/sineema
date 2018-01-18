@@ -1,0 +1,32 @@
+﻿@model IEnumerable<VideoLibrary.BusinessEntities.Models.Model.MovieActor>
+@{
+    Layout = null;
+}
+<h4> Actors in the movie</h4>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>
+            @Html.DisplayNameFor(model => model.Role)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Actor.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Role)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", "Actors", new { id=item.Id }, null) |
+            @Html.ActionLink("Details", "Details", "Actors", new { id=item.Id }, null) |
+            @Html.ActionLink("Delete", "Delete", "Actors", new { id=item.Id }, null)
+        </td>
+    </tr>
+}
+
+</table>

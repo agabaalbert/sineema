@@ -1,0 +1,68 @@
+﻿@model VideoLibrary.BusinessEntities.Models.Model.Movie
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <div>
+            <h4>Movie</h4>
+            <hr />
+            <dl class="dl-horizontal">
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Title)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Title)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Duration)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Duration)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Genre)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Genre)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.DateAdded)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DateAdded)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.AddedBy)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AddedBy)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+            @Html.ActionLink("Back to List", "Index") |
+            @Html.ActionLink("Add Actor", "AddActorOnMovie", "MovieActor", new { id = Model.Id }, null)
+        </p>
+    </div>
+    <div class="col-md-6">
+        @Html.Action("Index", "MovieActor", new { id = Model.Id })
+@*        @{Html.RenderAction("Index", "MovieActor", new {id = Model.Id});}*@
+    </div>
+</div>

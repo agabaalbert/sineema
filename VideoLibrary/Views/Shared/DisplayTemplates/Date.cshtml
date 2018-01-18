@@ -1,0 +1,7 @@
+﻿@model Nullable<DateTime>
+    
+@if (Model.HasValue)
+{
+
+    @: @Model.Value.ToString("dd MMM yyyy")
+}

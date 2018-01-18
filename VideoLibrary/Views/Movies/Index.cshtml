@@ -1,0 +1,30 @@
+﻿@model IEnumerable<VideoLibrary.BusinessEntities.Models.Model.Movie>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Movie List</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+    </div>
+    <div class="col-md-6">
+        <div class="btn-group pull-right movie-options">
+            <button type="button" class="btn btn-default movie-list" data-target=".movies-list"><i class="fa fa-list"></i></button>
+            <button type="button" class="btn btn-default movie-grid"  data-target=".movies-grid"><i class="fa fa-th-large"></i></button>
+        </div>
+    </div>
+</div>
+<br/>
+
+<div class="movies-list">
+    @Html.Partial("_List", Model)
+</div>
+
+<div class="movies-grid">
+    @Html.Partial("_Grid", Model)
+</div>
