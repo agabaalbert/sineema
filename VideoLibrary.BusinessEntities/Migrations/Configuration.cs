@@ -6,7 +6,7 @@ namespace VideoLibrary.BusinessEntities.Migrations
     using System;
     using System.Data.Entity.Migrations;
 
-    public sealed class Configuration : DbMigrationsConfiguration<VideoLibrary.BusinessEntities.LibraryContext>
+    public sealed class Configuration:DbMigrationsConfiguration<VideoLibrary.BusinessEntities.LibraryContext>
     {
         public Configuration()
         {
@@ -33,6 +33,7 @@ namespace VideoLibrary.BusinessEntities.Migrations
 
         private void SeedData(long count)
         {
+            
             using (var db = new LibraryContext())
             {
 
@@ -40,6 +41,17 @@ namespace VideoLibrary.BusinessEntities.Migrations
                 {
                     try
                     {
+                        //THIS IS A DEFAULT SYSTEM USER WHO WILL BE DEACTIVATED UPON DEPLOYMENT
+                        var DefaultUser = new SystemUser
+                        {
+                            UserName = "sysUser",
+                            FullName = "System User",
+                            Password = SystemUser.EncryptPwd("123456")
+                        };
+                        db.SystemUsers.AddOrUpdate(a => a.Id, DefaultUser);
+                        db.SaveChanges();
+
+                        //ADD DEFAULT ACTORS
                         int itemcount = 0;
                         bool isMale = true;
                         DateTime start = new DateTime(1900, 1, 1);
@@ -57,9 +69,11 @@ namespace VideoLibrary.BusinessEntities.Migrations
                                 NumberOfMovies = itemcount
                             };
 
-                            actor = db.Actors.Add(actor);
+                            //actor = db.Actors.Add(actor);
+                            db.Actors.AddOrUpdate(a => a.Name,actor);
                             db.SaveChanges();
                             
+                            //ADD DEFAULT MOVIES
                             var noOfmoviews = 0;
 
                             Array values = Enum.GetValues(typeof(Genre));
@@ -78,8 +92,8 @@ namespace VideoLibrary.BusinessEntities.Migrations
                                 };
 
                                 //context.Movies.AddOrUpdate(p => p.Title, movie);
-
-                                db.Movies.Add(movie);
+                                db.Movies.AddOrUpdate(m => m.Title, movie);
+                                //db.Movies.Add(movie);
 
                             } while (noOfmoviews <= actor.NumberOfMovies);
                             db.SaveChanges();

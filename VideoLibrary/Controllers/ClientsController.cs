@@ -22,7 +22,13 @@ namespace VideoLibrary.Controllers
         // GET: Clients
         public async Task<ActionResult> Index()
         {
-            return View(_clientCrudService.GetAllClients());
+			//check if a user has no session, then redirect him to login page. Otherwise, proceed to the landing home page/dashboard
+			if (Session["LoggedInUser"] == null)
+			{
+				return RedirectToAction("Index", "Login");
+			}
+
+			return View(_clientCrudService.GetAllClients());
         }
 
         // GET: Clients/Details/5

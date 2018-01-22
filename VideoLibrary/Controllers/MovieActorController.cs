@@ -23,7 +23,13 @@ namespace VideoLibrary.Controllers
         // GET: MovieActor
         public ActionResult Index(int id)
         {
-            var movieActors = Task.Run(() => _movieActorRepository.ActorsForMovies(id)).Result;
+			//check if a user has no session, then redirect him to login page. Otherwise, proceed to the landing home page/dashboard
+			if (Session["LoggedInUser"] == null)
+			{
+				return RedirectToAction("Index", "Login");
+			}
+
+			var movieActors = Task.Run(() => _movieActorRepository.ActorsForMovies(id)).Result;
             return View(movieActors);
         }
 

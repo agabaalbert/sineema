@@ -23,14 +23,22 @@ namespace VideoLibrary.BusinessEntities
         public DbSet<Movie> Movies { get; set; }
 
         public DbSet<MovieActor> MovieActors { get; set; }
+        public DbSet<SystemUser> SystemUsers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
+            try
+            {
+                modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
 
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+                modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+                modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
+            }
+            catch (System.Exception)
+            {
+
+            }
             base.OnModelCreating(modelBuilder);
         }
 
@@ -67,5 +75,6 @@ namespace VideoLibrary.BusinessEntities
 
             return base.SaveChangesAsync();
         }
+
     }
 }

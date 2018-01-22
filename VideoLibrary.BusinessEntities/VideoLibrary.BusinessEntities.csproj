@@ -92,6 +92,10 @@
     <Compile Include="Migrations\201705180949023_AddingMovieActorEntity.Designer.cs">
       <DependentUpon>201705180949023_AddingMovieActorEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801211242351_AddedSystemUsersTable.cs" />
+    <Compile Include="Migrations\201801211242351_AddedSystemUsersTable.Designer.cs">
+      <DependentUpon>201801211242351_AddedSystemUsersTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ModelConfig\ClientMap.cs" />
     <Compile Include="Models\ModelConfig\MovieMap.cs" />
@@ -102,6 +106,7 @@
     <Compile Include="Models\Model\ModelBase.cs" />
     <Compile Include="Models\Model\Movie.cs" />
     <Compile Include="Models\Model\MovieActor.cs" />
+    <Compile Include="Models\Model\SystemUser.cs" />
     <Compile Include="Models\PartialClasses\Client.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryBase.cs" />
@@ -116,18 +121,24 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201703091304022_CreateTables.resx">
       <DependentUpon>201703091304022_CreateTables.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703091344147_AddGenre.resx">
       <DependentUpon>201703091344147_AddGenre.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703091355203_AddLeadActor.resx">
       <DependentUpon>201703091355203_AddLeadActor.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703231214081_AddedNumberOfMoviesToActorModel.resx">
       <DependentUpon>201703231214081_AddedNumberOfMoviesToActorModel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705180949023_AddingMovieActorEntity.resx">
       <DependentUpon>201705180949023_AddingMovieActorEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801211242351_AddedSystemUsersTable.resx">
+      <DependentUpon>201801211242351_AddedSystemUsersTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

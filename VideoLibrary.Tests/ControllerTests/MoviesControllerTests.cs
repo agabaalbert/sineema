@@ -46,17 +46,17 @@ namespace VideoLibrary.Tests.ControllerTests
             //arrange...
             
             //act...
-            await _moviesController.Index();
+            await _moviesController.Index("Genre", "Tteke",null, "Genre");
 
-            //assert...
-            _moqMovieRepository.Verify(x => x.GetAll(), Times.Once());
+			//assert...
+			_moqMovieRepository.Verify(x => x.GetAll(), Times.Once());
         }
 
         [Test]
         public async Task Should_Have_Detail_View()
         {
             //act...
-            var result = (await _moviesController.Index()) as ViewResult;
+            var result = (await _moviesController.Index("Genre", "Tteke", null, "Genre")) as ViewResult;
 
             //assert...
             Assert.AreEqual(string.Empty, result.ViewName);

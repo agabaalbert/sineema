@@ -26,3 +26,27 @@ textarea {
 .thumbnail {
     margin-bottom: 15px;
 }
+
+
+
+.myTable td {
+    border: 5px solid #fbfeff;
+}
+
+.myTable td {
+    background-color: #9bdef6;
+    color: #037196;
+    border: 1px solid #ccc;
+    width: 180px;
+    height: 100px;
+}
+
+.myTable td:hover {
+    background-color: #3ebfe9;
+    color: white;
+}
+
+.MoviePoster {
+    text-align:left;
+    background-image:url(../images/poster.png);
+}

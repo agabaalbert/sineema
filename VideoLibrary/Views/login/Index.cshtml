@@ -1,0 +1,100 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <style>
+        .MainContainer {
+            width:450px;
+            margin-left:auto;
+            margin-right:auto;
+            margin-top:10%;
+        padding-left:30px;
+        padding-top:30px;
+        padding-bottom:30px;
+        background-color:#EBF1F6;
+           border: 2px solid #EBF1F6;
+border-radius:5px;
+        }
+
+.button {
+        width: 100%;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+
+.blueButton {
+    background-color: #82d4f2; 
+    color: #037196; 
+   border: 1px solid #ccc;
+}
+
+.blueButton:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=password], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+    </style>
+</head>
+<body>
+    <div class="MainContainer">
+        <table>
+            <tr ><td><img src="~/images/logo.png" width="400"></td></tr>
+            <tr>
+                <td>
+                    @*<h4>Login</h4>*@
+                    @using (Html.BeginForm())
+                    {
+                        <div>@Html.Label("User Name")</div>
+                        <div>@Html.TextBox("UserName", "", new { @Required = "Required" })</div>
+                        <div>@Html.Label("Password")</div>
+                        <div>@Html.Password("Password", "", new { @Required = "Required" })</div>
+                        <input type="submit" class="button blueButton" value="Login" />
+                    }
+
+                    <div><p style="color:orangered">@ViewBag.AuthenticationMsg</p></div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

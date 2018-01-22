@@ -1,13 +1,30 @@
-﻿<!DOCTYPE html>
+﻿
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Error</title>
+    <title>Login</title>
+    <style>
+        .ErrorContainer {
+            color:#f54128;
+        }
+        body {
+            padding-left:30px;
+            padding-top:40px;
+                    background-color: #EBF1F6;
+        }
+    </style>
 </head>
 <body>
-    <hgroup>
-        <h1>Error.</h1>
-        <h2>An error occurred while processing your request.</h2>
-    </hgroup>
+    <div class="ErrorContainer">
+        <h3>Something went wrong while processing your request in the Sineema system, please try again</h3>
+</div>
 </body>
+
 </html>

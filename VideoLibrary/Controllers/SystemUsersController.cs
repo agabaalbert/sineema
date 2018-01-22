@@ -1,20 +1,22 @@
-﻿using System.Data.Entity;
-using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using VideoLibrary.BusinessEntities;
 using VideoLibrary.BusinessEntities.Models.Model;
 
 namespace VideoLibrary.Controllers
 {
-
-    public class ActorsController : Controller
+    public class SystemUsersController : Controller
     {
-
         private LibraryContext db = new LibraryContext();
 
-        // GET: Actors
-        public async Task<ActionResult> Index()
+        // GET: SystemUsers
+        public ActionResult Index()
         {
 			//check if a user has no session, then redirect him to login page. Otherwise, proceed to the landing home page/dashboard
 			if (Session["LoggedInUser"] == null)
@@ -22,101 +24,105 @@ namespace VideoLibrary.Controllers
 				return RedirectToAction("Index", "Login");
 			}
 
-			return View(await db.Actors.ToListAsync());
+			return View(db.SystemUsers.ToList());
         }
 
-        // GET: Actors/Details/5
-        public async Task<ActionResult> Details(long? id)
+        // GET: SystemUsers/Details/5
+        public ActionResult Details(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Actor actor = await db.Actors.FindAsync(id);
-            if (actor == null)
+            SystemUser systemUser = db.SystemUsers.Find(id);
+            if (systemUser == null)
             {
                 return HttpNotFound();
             }
-            return View(actor);
+            return View(systemUser);
         }
 
-        // GET: Actors/Create
+        // GET: SystemUsers/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Actors/Create
+        // POST: SystemUsers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name,DateOfBirth,Gender,Genre")] Actor actor)
+        public ActionResult Create([Bind(Include = "Id,UserName,FullName,Password,IsActive,DateAdded,AddedBy")] SystemUser systemUser)
         {
             if (ModelState.IsValid)
             {
-                db.Actors.Add(actor);
-                await db.SaveChangesAsync();
+                systemUser.Password = SystemUser.EncryptPwd(systemUser.Password); //encrypt user's password from here before saving the new user
+
+                db.SystemUsers.Add(systemUser);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(actor);
+            return View(systemUser);
         }
 
-        // GET: Actors/Edit/5
-        public async Task<ActionResult> Edit(long? id)
+        // GET: SystemUsers/Edit/5
+        public ActionResult Edit(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Actor actor = await db.Actors.FindAsync(id);
-            if (actor == null)
+            SystemUser systemUser = db.SystemUsers.Find(id);
+            if (systemUser == null)
             {
                 return HttpNotFound();
             }
-            return View(actor);
+            return View(systemUser);
         }
 
-        // POST: Actors/Edit/5
+        // POST: SystemUsers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,DateOfBirth,Gender,Genre,IsActive,DateAdded,AddedBy")] Actor actor)
+        public ActionResult Edit([Bind(Include = "Id,UserName,FullName,Password,IsActive,DateAdded,AddedBy")] SystemUser systemUser)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(actor).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                systemUser.Password = SystemUser.EncryptPwd(systemUser.Password); //encrypt user's password from here before saving the edit
+
+                db.Entry(systemUser).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(actor);
+            return View(systemUser);
         }
 
-        // GET: Actors/Delete/5
-        public async Task<ActionResult> Delete(long? id)
+        // GET: SystemUsers/Delete/5
+        public ActionResult Delete(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Actor actor = await db.Actors.FindAsync(id);
-            if (actor == null)
+            SystemUser systemUser = db.SystemUsers.Find(id);
+            if (systemUser == null)
             {
                 return HttpNotFound();
             }
-            return View(actor);
+            return View(systemUser);
         }
 
-        // POST: Actors/Delete/5
+        // POST: SystemUsers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(long id)
+        public ActionResult DeleteConfirmed(long id)
         {
-            Actor actor = await db.Actors.FindAsync(id);
-            db.Actors.Remove(actor);
-            await db.SaveChangesAsync();
+            SystemUser systemUser = db.SystemUsers.Find(id);
+            db.SystemUsers.Remove(systemUser);
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoLibrary", "VideoLibrary\VideoLibrary.csproj", "{47FD98CD-E4F7-4AA7-B865-2F35228D433B}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoLibrary.BusinessLogic", "VideoLibrary.BusinessLogic\VideoLibrary.BusinessLogic.csproj", "{B4DF69ED-EAFA-4880-A943-C8EEF8C6BC78}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoLibrary.Tests", "VideoLibrary.Tests\VideoLibrary.Tests.csproj", "{F9B8B121-D626-425C-8744-14CB1325AF29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoLibrary.MyUnitTests", "VideoLibrary.MyUnitTests\VideoLibrary.MyUnitTests.csproj", "{AE162E85-7A29-4F90-AAC3-CB934BA74FF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,22 @@ Global
 		{F9B8B121-D626-425C-8744-14CB1325AF29}.Release|x64.Build.0 = Release|Any CPU
 		{F9B8B121-D626-425C-8744-14CB1325AF29}.Release|x86.ActiveCfg = Release|Any CPU
 		{F9B8B121-D626-425C-8744-14CB1325AF29}.Release|x86.Build.0 = Release|Any CPU
+		{AE162E85-7A29-4F90-AAC3-CB934BA74FF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE162E85-7A29-4F90-AAC3-CB934BA74FF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE162E85-7A29-4F90-AAC3-CB934BA74FF2}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{AE162E85-7A29-4F90-AAC3-CB934BA74FF2}.Debug|ARM.Build.0 = Debug|Any CPU
+		{AE162E85-7A29-4F90-AAC3-CB934BA74FF2}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AE162E85-7A29-4F90-AAC3-CB934BA74FF2}.Debug|x64.Build.0 = Debug|Any CPU
+		{AE162E85-7A29-4F90-AAC3-CB934BA74FF2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AE162E85-7A29-4F90-AAC3-CB934BA74FF2}.Debug|x86.Build.0 = Debug|Any CPU
+		{AE162E85-7A29-4F90-AAC3-CB934BA74FF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE162E85-7A29-4F90-AAC3-CB934BA74FF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE162E85-7A29-4F90-AAC3-CB934BA74FF2}.Release|ARM.ActiveCfg = Release|Any CPU
+		{AE162E85-7A29-4F90-AAC3-CB934BA74FF2}.Release|ARM.Build.0 = Release|Any CPU
+		{AE162E85-7A29-4F90-AAC3-CB934BA74FF2}.Release|x64.ActiveCfg = Release|Any CPU
+		{AE162E85-7A29-4F90-AAC3-CB934BA74FF2}.Release|x64.Build.0 = Release|Any CPU
+		{AE162E85-7A29-4F90-AAC3-CB934BA74FF2}.Release|x86.ActiveCfg = Release|Any CPU
+		{AE162E85-7A29-4F90-AAC3-CB934BA74FF2}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

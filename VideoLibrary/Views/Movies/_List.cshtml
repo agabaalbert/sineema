@@ -1,28 +1,48 @@
-﻿@model IEnumerable<VideoLibrary.BusinessEntities.Models.Model.Movie>
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<VideoLibrary.BusinessEntities.Models.Model.Movie>
 
 <table class="table">
     <tr>
+        @*<th>
+           SNo
+        </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.Title)
+            @Html.ActionLink("Title", "Index", new { sortBy = ViewBag.SortTitleParameter, searchBy = Request.QueryString["searchBy"], searchText = Request.QueryString["searchText"] })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Duration)
+            @Html.ActionLink("Duration", "Index", new { sortBy = ViewBag.SortDurationParameter, searchBy = Request.QueryString["searchBy"], searchText = Request.QueryString["searchText"] })
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Genre)
+            @Html.ActionLink("Genre", "Index", new { sortBy = ViewBag.SortGenreParameter, searchBy = Request.QueryString["searchBy"], searchText = Request.QueryString["searchText"] })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateAdded)
+            @Html.ActionLink("DateAdded", "Index", new { sortBy = ViewBag.SortDateAddedParameter, searchBy = Request.QueryString["searchBy"], searchText = Request.QueryString["searchText"] })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AddedBy)
+            @Html.ActionLink("AddedBy", "Index", new { sortBy = ViewBag.SortAddedByParameter, searchBy = Request.QueryString["searchBy"], searchText = Request.QueryString["searchText"] })
+
         </th>
         <th></th>
     </tr>
 
+    @if (Model.Count() == 0)
+    {
+		 <tr>
+             <td colspan="6" style="color:#f54128">No records matching your search criteria were found</td>
+         </tr>
+    }
+
+  @*  @{var counter = 0;}*@
     @foreach (var item in Model)
     {
+        //counter++;
         <tr>
+            @*<td>
+                @counter
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
@@ -30,6 +50,7 @@
                 @Html.DisplayFor(modelItem => item.Duration)
             </td>
             <td>
+
                 @Html.DisplayFor(modelItem => item.Genre)
             </td>
             <td>
